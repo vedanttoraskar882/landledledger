@@ -19,12 +19,6 @@ export default function HeroSection({ onOpenPilotModal }) {
         
         {/* Main Hero Header */}
         <div className="text-center max-w-4xl mx-auto animate-fade-in-up">
-          {/* Status Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-[#2C2420] border border-[#D6CCC2] shadow-2xs mb-8 transition-transform hover:scale-105">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#2C2420] animate-pulse-soft" aria-hidden="true" />
-            <span>In development • Pilot enquiries</span>
-          </div>
-
           {/* Main Headline - Big & Prominent */}
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-[#2C2420] tracking-tight leading-[1.08] text-balance">
             Know the true cost of every import.
