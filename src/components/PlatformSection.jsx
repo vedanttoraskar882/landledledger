@@ -117,7 +117,7 @@ export default function PlatformSection() {
             return (
               <div
                 key={mod.num}
-                className="rounded-2xl border border-[#D6CCC2] bg-white p-7 sm:p-8 shadow-2xs hover:border-[#2C2420]/40 hover:shadow-md transition-all flex flex-col justify-between"
+                className="rounded-2xl border border-[#D6CCC2] bg-white p-7 sm:p-8 shadow-2xs card-hover flex flex-col justify-between"
               >
                 <div>
                   {/* Top Bar with Number & Status Badge */}

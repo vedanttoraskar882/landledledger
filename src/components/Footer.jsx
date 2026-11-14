@@ -36,7 +36,7 @@ export default function Footer({ onOpenPilotModal }) {
               <button
                 type="button"
                 onClick={() => onOpenPilotModal()}
-                className="inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-[#2C2420] bg-[#F7F5F2] hover:bg-white transition-colors focus:ring-2 focus:ring-white focus:outline-hidden cursor-pointer shadow-xs"
+                className="inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-[#2C2420] bg-[#F7F5F2] hover:bg-white transition-all hover:scale-105 active:scale-95 focus:ring-2 focus:ring-white focus:outline-hidden cursor-pointer shadow-xs"
               >
                 Request a Pilot
               </button>
@@ -64,20 +64,17 @@ export default function Footer({ onOpenPilotModal }) {
 
         </div>
 
-        {/* Notices and Copyright */}
-        <div className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-[#D6CCC2]">
-          <div className="space-y-1">
-            <p>
-              Proposed platform in development. Pricing and availability are subject to pilot validation.
-            </p>
-            <p className="text-[#D6CCC2]/70">
-              Pilot form entries are stored locally in your browser and are not transmitted.
-            </p>
+        {/* Copyright only */}
+        <div className="pt-8 flex items-center justify-between text-xs text-[#D6CCC2]">
+          <div className="font-medium">
+            © {currentYear} LandedLedger. All rights reserved.
           </div>
-
-          <div className="text-[#D6CCC2] shrink-0 font-medium">
-            © {currentYear} LandedLedger.
-          </div>
+          <a
+            href="#home"
+            className="hover:text-white transition-colors"
+          >
+            Back to top ↑
+          </a>
         </div>
 
       </div>

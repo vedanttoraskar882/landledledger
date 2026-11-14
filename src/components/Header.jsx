@@ -69,7 +69,7 @@ export default function Header({ onOpenPilotModal, pilotBtnRef }) {
               ref={pilotBtnRef}
               type="button"
               onClick={() => onOpenPilotModal()}
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-sm font-semibold text-[#F7F5F2] bg-[#2C2420] hover:bg-[#3D332D] active:bg-[#1f1916] shadow-xs transition-colors focus-visible:ring-2 focus-visible:ring-[#2C2420] focus-visible:ring-offset-2 focus:outline-hidden cursor-pointer"
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-sm font-semibold text-[#F7F5F2] bg-[#2C2420] hover:bg-[#3D332D] active:bg-[#1f1916] shadow-xs transition-all hover:scale-105 active:scale-95 focus-visible:ring-2 focus-visible:ring-[#2C2420] focus-visible:ring-offset-2 focus:outline-hidden cursor-pointer"
             >
               Request a Pilot
             </button>

@@ -18,10 +18,10 @@ export default function HeroSection({ onOpenPilotModal }) {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Hero Header */}
-        <div className="text-center max-w-4xl mx-auto">
+        <div className="text-center max-w-4xl mx-auto animate-fade-in-up">
           {/* Status Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-[#2C2420] border border-[#D6CCC2] shadow-2xs mb-8">
-            <span className="w-2 h-2 rounded-full bg-[#2C2420] animate-pulse" aria-hidden="true" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white text-[#2C2420] border border-[#D6CCC2] shadow-2xs mb-8 transition-transform hover:scale-105">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#2C2420] animate-pulse-soft" aria-hidden="true" />
             <span>In development • Pilot enquiries</span>
           </div>
 
@@ -45,13 +45,13 @@ export default function HeroSection({ onOpenPilotModal }) {
             <button
               type="button"
               onClick={() => onOpenPilotModal()}
-              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl text-base font-bold text-[#F7F5F2] bg-[#2C2420] hover:bg-[#3D332D] active:bg-[#1f1916] shadow-sm transition-all focus:ring-2 focus:ring-[#2C2420] focus:ring-offset-2 focus:outline-hidden cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl text-base font-bold text-[#F7F5F2] bg-[#2C2420] hover:bg-[#3D332D] active:bg-[#1f1916] shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98] focus:ring-2 focus:ring-[#2C2420] focus:ring-offset-2 focus:outline-hidden cursor-pointer"
             >
               Request a Pilot
             </button>
             <a
               href="#platform"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl text-base font-bold text-[#2C2420] bg-white hover:bg-[#D6CCC2]/20 border border-[#D6CCC2] shadow-2xs transition-colors focus:ring-2 focus:ring-[#2C2420] focus:outline-hidden"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl text-base font-bold text-[#2C2420] bg-white hover:bg-[#D6CCC2]/20 border border-[#D6CCC2] shadow-2xs transition-all hover:scale-[1.02] active:scale-[0.98] focus:ring-2 focus:ring-[#2C2420] focus:outline-hidden"
             >
               Explore the Platform
             </a>

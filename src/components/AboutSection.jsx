@@ -32,7 +32,7 @@ export default function AboutSection() {
         <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           
           {/* Card 1: Fragmented documents */}
-          <div className="rounded-2xl border border-[#D6CCC2] bg-white p-7 sm:p-8 flex flex-col justify-between shadow-2xs hover:border-[#2C2420]/40 transition-colors">
+          <div className="rounded-2xl border border-[#D6CCC2] bg-white p-7 sm:p-8 flex flex-col justify-between shadow-2xs card-hover">
             <div>
               <div className="w-12 h-12 rounded-xl bg-[#D6CCC2]/35 text-[#2C2420] flex items-center justify-center mb-6">
                 <FileText className="w-6 h-6" aria-hidden="true" />
@@ -55,7 +55,7 @@ export default function AboutSection() {
           </div>
 
           {/* Card 2: Unclear product costs */}
-          <div className="rounded-2xl border border-[#D6CCC2] bg-white p-7 sm:p-8 flex flex-col justify-between shadow-2xs hover:border-[#2C2420]/40 transition-colors">
+          <div className="rounded-2xl border border-[#D6CCC2] bg-white p-7 sm:p-8 flex flex-col justify-between shadow-2xs card-hover">
             <div>
               <div className="w-12 h-12 rounded-xl bg-[#D6CCC2]/35 text-[#2C2420] flex items-center justify-center mb-6">
                 <Scale className="w-6 h-6" aria-hidden="true" />
@@ -78,7 +78,7 @@ export default function AboutSection() {
           </div>
 
           {/* Card 3: Reconciliation gaps */}
-          <div className="rounded-2xl border border-[#D6CCC2] bg-white p-7 sm:p-8 flex flex-col justify-between shadow-2xs hover:border-[#2C2420]/40 transition-colors">
+          <div className="rounded-2xl border border-[#D6CCC2] bg-white p-7 sm:p-8 flex flex-col justify-between shadow-2xs card-hover">
             <div>
               <div className="w-12 h-12 rounded-xl bg-[#D6CCC2]/35 text-[#2C2420] flex items-center justify-center mb-6">
                 <FileCheck className="w-6 h-6" aria-hidden="true" />
@@ -134,7 +134,7 @@ export default function AboutSection() {
             </div>
 
             {/* Center Anchor: Customs Entry Hub */}
-            <div className="md:col-span-1 p-4 rounded-xl bg-[#1f1916] border-2 border-[#D6CCC2] text-center shadow-lg relative my-2 md:my-0">
+            <div className="md:col-span-1 p-4 rounded-xl bg-[#1f1916] border-2 border-[#D6CCC2] text-center shadow-lg relative my-2 md:my-0 animate-float">
               <div className="text-[10px] font-mono text-[#D6CCC2] font-bold uppercase tracking-wider mb-1">
                 Central Anchor
               </div>

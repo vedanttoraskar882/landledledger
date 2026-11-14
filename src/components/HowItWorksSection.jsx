@@ -87,7 +87,7 @@ export default function HowItWorksSection() {
             return (
               <div
                 key={step.num}
-                className="relative p-7 rounded-2xl border border-[#D6CCC2] bg-white hover:border-[#2C2420]/40 hover:shadow-md transition-all flex flex-col justify-between shadow-2xs"
+                className="relative p-7 rounded-2xl border border-[#D6CCC2] bg-white card-hover flex flex-col justify-between shadow-2xs"
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">
