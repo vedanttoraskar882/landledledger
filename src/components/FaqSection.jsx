@@ -60,24 +60,24 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="py-16 sm:py-24 bg-white scroll-mt-24 border-t border-slate-200/80">
+    <section id="faq" className="py-20 sm:py-28 bg-[#F7F5F2] scroll-mt-24 border-t border-[#D6CCC2]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-800 border border-slate-200 mb-3">
+        <div className="text-center max-w-2xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#D6CCC2]/35 text-[#2C2420] border border-[#D6CCC2] mb-4">
             Questions & Answers
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#2C2420] tracking-tight leading-tight">
             Frequently Asked Questions
           </h2>
-          <p className="mt-3 text-base text-slate-600">
+          <p className="mt-4 text-base sm:text-lg text-[#5C524B]">
             Answers to common questions regarding LandedLedger’s proposed concept, architecture and pilot.
           </p>
         </div>
 
         {/* Accessible Accordion List */}
-        <div className="space-y-3">
+        <div className="space-y-3.5">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             const questionId = `faq-q-${index}`;
@@ -86,7 +86,7 @@ export default function FaqSection() {
             return (
               <div
                 key={index}
-                className="rounded-2xl border border-slate-200 bg-slate-50/40 overflow-hidden transition-colors"
+                className="rounded-2xl border border-[#D6CCC2] bg-white overflow-hidden transition-colors shadow-2xs"
               >
                 <h3>
                   <button
@@ -95,14 +95,14 @@ export default function FaqSection() {
                     aria-expanded={isOpen}
                     aria-controls={answerId}
                     onClick={() => toggleFaq(index)}
-                    className="w-full px-5 sm:px-6 py-4 sm:py-5 text-left flex items-center justify-between gap-4 font-semibold text-slate-900 hover:text-teal-800 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-teal-600 transition-colors"
+                    className="w-full px-6 sm:px-8 py-5 sm:py-6 text-left flex items-center justify-between gap-4 font-bold text-[#2C2420] hover:text-[#2C2420] focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#2C2420] transition-colors"
                   >
-                    <span className="text-sm sm:text-base leading-snug">
+                    <span className="text-base sm:text-lg leading-snug">
                       {faq.q}
                     </span>
                     <ChevronDown
-                      className={`w-5 h-5 text-slate-500 shrink-0 transition-transform duration-200 ${
-                        isOpen ? 'rotate-180 text-teal-700' : ''
+                      className={`w-5 h-5 text-[#5C524B] shrink-0 transition-transform duration-200 ${
+                        isOpen ? 'rotate-180 text-[#2C2420]' : ''
                       }`}
                       aria-hidden="true"
                     />
@@ -114,7 +114,7 @@ export default function FaqSection() {
                     id={answerId}
                     role="region"
                     aria-labelledby={questionId}
-                    className="px-5 sm:px-6 pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100"
+                    className="px-6 sm:px-8 pb-6 pt-1 text-xs sm:text-sm text-[#5C524B] leading-relaxed border-t border-[#D6CCC2]/50"
                   >
                     <p>{faq.a}</p>
                   </div>

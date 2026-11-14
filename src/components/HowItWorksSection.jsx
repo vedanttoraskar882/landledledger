@@ -64,46 +64,46 @@ export default function HowItWorksSection() {
   ];
 
   return (
-    <section id="how-it-works" className="py-16 sm:py-24 bg-white scroll-mt-24 border-t border-slate-200/80">
+    <section id="how-it-works" className="py-20 sm:py-28 bg-[#F7F5F2] scroll-mt-24 border-t border-[#D6CCC2]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-800 border border-slate-200 mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#D6CCC2]/35 text-[#2C2420] border border-[#D6CCC2] mb-4">
             Proposed product workflow
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#2C2420] tracking-tight leading-tight">
             From import paperwork to reviewable evidence.
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
+          <p className="mt-5 text-base sm:text-lg text-[#5C524B] leading-relaxed">
             A structured eight-step lifecycle designed to move from scattered commercial invoices and transport bills to an auditable, product-level landed-cost ledger.
           </p>
         </div>
 
         {/* 8 Steps Grid */}
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
           {steps.map((step) => {
             const Icon = step.icon;
             return (
               <div
                 key={step.num}
-                className="relative p-6 rounded-2xl border border-slate-200/80 bg-slate-50/50 hover:bg-white hover:border-slate-300 hover:shadow-md transition-all flex flex-col justify-between"
+                className="relative p-7 rounded-2xl border border-[#D6CCC2] bg-white hover:border-[#2C2420]/40 hover:shadow-md transition-all flex flex-col justify-between shadow-2xs"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="w-8 h-8 rounded-lg bg-slate-900 text-white font-mono text-sm font-bold flex items-center justify-center">
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="w-9 h-9 rounded-xl bg-[#2C2420] text-[#F7F5F2] font-mono text-sm font-extrabold flex items-center justify-center">
                       {step.num}
                     </span>
-                    <div className="p-2 rounded-lg bg-teal-50 text-teal-700">
-                      <Icon className="w-4 h-4" aria-hidden="true" />
+                    <div className="p-2.5 rounded-xl bg-[#D6CCC2]/35 text-[#2C2420]">
+                      <Icon className="w-5 h-5 text-[#2C2420]" aria-hidden="true" />
                     </div>
                   </div>
 
-                  <h3 className="text-base font-bold text-slate-900 mb-2">
+                  <h3 className="text-lg font-bold text-[#2C2420] mb-2.5">
                     {step.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-[#5C524B] leading-relaxed">
                     {step.description}
                   </p>
                 </div>
@@ -113,9 +113,11 @@ export default function HowItWorksSection() {
         </div>
 
         {/* Human Review Visible Note */}
-        <div className="mt-12 p-4 sm:p-5 rounded-2xl bg-teal-50/80 border border-teal-200 text-teal-900 flex items-center gap-3.5 shadow-2xs max-w-3xl mx-auto">
-          <UserCheck className="w-5 h-5 text-teal-700 shrink-0" aria-hidden="true" />
-          <p className="text-xs sm:text-sm font-medium">
+        <div className="mt-14 p-5 sm:p-6 rounded-2xl bg-white border border-[#D6CCC2] text-[#2C2420] flex items-center gap-4 shadow-2xs max-w-3xl mx-auto">
+          <div className="p-2.5 rounded-xl bg-[#D6CCC2]/35 text-[#2C2420] shrink-0">
+            <UserCheck className="w-5 h-5" aria-hidden="true" />
+          </div>
+          <p className="text-xs sm:text-sm font-semibold leading-relaxed">
             <strong>Human review and approval are part of the proposed workflow.</strong> Uncertain matches and accounting adjustments require user confirmation before finalisation.
           </p>
         </div>
