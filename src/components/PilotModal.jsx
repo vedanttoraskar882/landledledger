@@ -194,7 +194,7 @@ export default function PilotModal({ isOpen, onClose, triggerRef, selectedPlan }
               Submission Saved Locally
             </h3>
             <p className="text-sm text-[#2C2420] mb-4 bg-white border border-[#D6CCC2] p-4 rounded-xl text-left leading-relaxed">
-              <strong>Your pilot interest has been saved in this browser only. It has not been sent to LandedLedger.</strong>
+              <strong>Your details are saved only in this browser on this device and are not sent to LandedLedger.</strong>
             </p>
 
             <div className="bg-white border border-[#D6CCC2] rounded-xl p-4 text-left text-xs sm:text-sm text-[#5C524B] space-y-1.5 mb-6">

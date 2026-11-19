@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
@@ -12,6 +12,7 @@ import PilotModal from './components/PilotModal';
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState('');
+  const [isMotionPaused, setIsMotionPaused] = useState(false);
   const lastActiveTriggerRef = useRef(null);
 
   const handleOpenPilotModal = (planName = '') => {
@@ -27,12 +28,59 @@ export default function App() {
     setIsModalOpen(false);
   };
 
+  const toggleMotion = () => {
+    setIsMotionPaused((prev) => !prev);
+  };
+
+  // Synchronize motion pause state to document root
+  useEffect(() => {
+    if (isMotionPaused) {
+      document.documentElement.classList.add('motion-paused');
+    } else {
+      document.documentElement.classList.remove('motion-paused');
+    }
+  }, [isMotionPaused]);
+
+  // Pause continuous animation when tab/document is hidden
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        document.documentElement.classList.add('motion-paused');
+      } else if (!isMotionPaused) {
+        document.documentElement.classList.remove('motion-paused');
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+  }, [isMotionPaused]);
+
+  // One-time restrained scroll reveal for workflow and cards
+  useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    const elements = document.querySelectorAll('.scroll-reveal');
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-[#F7F5F2] text-[#2C2420]">
       {/* Sticky Navigation Header */}
       <Header
         onOpenPilotModal={handleOpenPilotModal}
         pilotBtnRef={lastActiveTriggerRef}
+        isMotionPaused={isMotionPaused}
+        onToggleMotion={toggleMotion}
       />
 
       {/* Main Content Area */}

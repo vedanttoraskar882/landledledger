@@ -34,7 +34,7 @@
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -42,12 +42,74 @@
   }
 }
 
+/* Soft gradient subtle drift (24s cycle) */
+@keyframes gradientDrift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(30px, -20px) scale(1.06);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+/* Connected evidence line pulse (16s cycle) */
+@keyframes networkPulse {
+  0%, 100% {
+    stroke-dashoffset: 200;
+    opacity: 0.2;
+  }
+  50% {
+    stroke-dashoffset: 0;
+    opacity: 0.65;
+  }
+}
+
+/* Sequential node glow in graph */
+@keyframes nodeGlow {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.25);
+  }
+}
+
+/* Sequential connection pulse in evidence graph (8s cycle) */
+@keyframes sequentialPulse1 {
+  0%, 100% { opacity: 0.35; }
+  15% { opacity: 1; }
+  35% { opacity: 0.35; }
+}
+
+@keyframes sequentialPulse2 {
+  0%, 100% { opacity: 0.35; }
+  30% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@keyframes sequentialPulse3 {
+  0%, 100% { opacity: 0.35; }
+  45% { opacity: 1; }
+  65% { opacity: 0.35; }
+}
+
+@keyframes sequentialPulse4 {
+  0%, 100% { opacity: 0.35; }
+  60% { opacity: 1; }
+  80% { opacity: 0.35; }
+}
+
 @keyframes floatGentle {
   0%, 100% {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-5px);
+    transform: translateY(-3px);
   }
 }
 
@@ -58,30 +120,78 @@
   }
   50% {
     opacity: 0.6;
-    transform: scale(1.1);
+    transform: scale(1.08);
   }
 }
 
 .animate-fade-in-up {
-  animation: fadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: fadeInUp 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-gradient-drift {
+  animation: gradientDrift 24s ease-in-out infinite;
+}
+
+.animate-network-line {
+  stroke-dasharray: 10 14;
+  animation: networkPulse 16s linear infinite;
+}
+
+.animate-node-glow {
+  animation: nodeGlow 14s ease-in-out infinite;
 }
 
 .animate-float {
-  animation: floatGentle 4s ease-in-out infinite;
+  animation: floatGentle 5s ease-in-out infinite;
 }
 
 .animate-pulse-soft {
   animation: pulseSoft 2.5s ease-in-out infinite;
 }
 
-/* Card hover animation enhancements */
+.animate-seq-1 {
+  animation: sequentialPulse1 8s ease-in-out infinite;
+}
+
+.animate-seq-2 {
+  animation: sequentialPulse2 8s ease-in-out infinite;
+}
+
+.animate-seq-3 {
+  animation: sequentialPulse3 8s ease-in-out infinite;
+}
+
+.animate-seq-4 {
+  animation: sequentialPulse4 8s ease-in-out infinite;
+}
+
+/* Card hover animation with <= 3px upward movement */
 .card-hover {
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s ease;
 }
 
 .card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px -8px rgba(44, 36, 32, 0.12);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px -8px rgba(44, 36, 32, 0.1);
+}
+
+/* One-time scroll reveal styles */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Discreet pause control effect */
+.motion-paused *,
+.motion-paused *::before,
+.motion-paused *::after {
+  animation-play-state: paused !important;
 }
 
 /* Reduced motion preference */
@@ -91,6 +201,10 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+    transform: none !important;
+  }
+  .scroll-reveal {
+    opacity: 1 !important;
     transform: none !important;
   }
 }

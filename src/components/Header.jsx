@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Pause, Play } from 'lucide-react';
 
-export default function Header({ onOpenPilotModal, pilotBtnRef }) {
+export default function Header({ onOpenPilotModal, pilotBtnRef, isMotionPaused, onToggleMotion }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -63,8 +63,24 @@ export default function Header({ onOpenPilotModal, pilotBtnRef }) {
             ))}
           </nav>
 
-          {/* Header Action Button */}
+          {/* Header Action Controls */}
           <div className="hidden md:flex items-center space-x-3">
+            {/* Discreet Accessible Motion Toggle */}
+            <button
+              type="button"
+              onClick={onToggleMotion}
+              aria-pressed={isMotionPaused}
+              aria-label={isMotionPaused ? 'Resume background animations' : 'Pause background animations'}
+              title={isMotionPaused ? 'Resume background animations' : 'Pause background animations'}
+              className="p-2 rounded-xl text-[#2C2420]/70 hover:text-[#2C2420] hover:bg-[#D6CCC2]/30 border border-[#D6CCC2]/60 transition-colors focus-visible:ring-2 focus-visible:ring-[#2C2420]"
+            >
+              {isMotionPaused ? (
+                <Play className="w-4 h-4" aria-hidden="true" />
+              ) : (
+                <Pause className="w-4 h-4" aria-hidden="true" />
+              )}
+            </button>
+
             <button
               ref={pilotBtnRef}
               type="button"
@@ -75,8 +91,22 @@ export default function Header({ onOpenPilotModal, pilotBtnRef }) {
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center">
+          {/* Mobile Menu & Motion Controls */}
+          <div className="flex md:hidden items-center space-x-2">
+            <button
+              type="button"
+              onClick={onToggleMotion}
+              aria-pressed={isMotionPaused}
+              aria-label={isMotionPaused ? 'Resume background animations' : 'Pause background animations'}
+              className="p-2 rounded-lg text-[#2C2420]/70 hover:bg-[#D6CCC2]/30 border border-[#D6CCC2]/60 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#2C2420]"
+            >
+              {isMotionPaused ? (
+                <Play className="w-4 h-4" aria-hidden="true" />
+              ) : (
+                <Pause className="w-4 h-4" aria-hidden="true" />
+              )}
+            </button>
+
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

@@ -10,7 +10,9 @@ import {
   Clock,
   FileCheck2,
   Lock,
-  Compass
+  Compass,
+  UserCheck,
+  ShieldAlert
 } from 'lucide-react';
 
 export default function PlatformSection() {
@@ -18,78 +20,85 @@ export default function PlatformSection() {
     {
       num: 'MODULE 1',
       title: 'Capture & Extract',
-      status: 'Proposed MVP',
+      status: 'Planned MVP capability',
       icon: Inbox,
       scope: [
-        'Receive documents through email, uploads and accounting sync.',
-        'Extract invoice details, currencies, weights, line items and customs references.',
-        'Prepare information for matching and review.'
+        'Proposed mailbox, upload and accounting-sync capture.',
+        'Document classification and extraction for supplier invoices, freight bills, broker documents and import VAT evidence.',
+        'Extraction of line items, currencies, weights and references.',
+        'Field-level confidence scores on all extracted values.'
       ],
-      benefit: 'Reduce repeated data entry and organise import paperwork.'
+      benefit: 'Reduce manual data entry and organise import paperwork around customs entries.'
     },
     {
       num: 'MODULE 2',
       title: 'Entry Matcher',
-      status: 'Proposed MVP',
+      status: 'Planned MVP capability',
       icon: GitPullRequest,
       scope: [
-        'Link documents to customs entries.',
-        'Use references, dates, values and supplier names.',
-        'Assign match confidence.',
-        'Route uncertain matches for human review.'
+        'Normalisation of customs entry numbers and declarant references.',
+        'Exact-reference matching prioritised first.',
+        'Probabilistic matching using dates, values, supplier names and weights when needed.',
+        'Explainable confidence scores with human review of uncertain matches.',
+        'Growing per-broker template library to improve matching over time.'
       ],
-      benefit: 'Build a traceable record for each import.'
+      benefit: 'Build a single traceable record for each customs entry.'
     },
     {
       num: 'MODULE 3',
       title: 'Landed-Cost Engine',
-      status: 'Proposed MVP',
+      status: 'Planned MVP capability',
       icon: Calculator,
       scope: [
-        'Allocate freight, insurance, customs duty and handling.',
-        'Support allocation by value, weight, volume, quantity or custom split.',
-        'Record exchange rates.',
-        'Prepare proposed accounting journals or item-cost updates for approval.',
-        'Prioritise Xero landed-cost journals in the MVP.'
+        'Allocation of freight, insurance, duty and handling to individual product lines.',
+        'Recorded exchange-rate source and date for reproducible calculations.',
+        'Initial MVP allocation methods: value, weight and volume.',
+        'Broader planned methods: quantity and custom split.',
+        'Proposed balanced journals or item-cost updates for approval, with Xero prioritised.'
       ],
-      benefit: 'Understand the full cost of individual imported products.'
+      benefit: 'Understand the true landed cost per product with deterministic financial calculations.'
     },
     {
       num: 'MODULE 4',
       title: 'PVA & C79 Reconciler',
-      status: 'PVA: proposed MVP • C79: Year 2 roadmap',
+      status: 'PVA: planned MVP • C79: planned Year 2 expansion',
       icon: ShieldCheck,
       scope: [
-        'Compare postponed VAT accounting statements and C79 evidence with import and ledger records.',
-        'Identify missing entries, value differences, timing issues, duplicates and unrelated entries.',
-        'Support investigation and review.'
+        'Line-level comparison between import VAT statements, the evidence graph and ledger records.',
+        'Supporting workings for VAT return Boxes 1, 4 and 7.',
+        'Structured exception logs and proposed corrective actions.',
+        'Classify discrepancies across 5 categories: (1) Missing entry, (2) Value difference, (3) Timing difference, (4) Non-business or wrong-EORI entry, (5) Duplicate.',
+        'Exportable VAT support packs ready for review.'
       ],
-      benefit: 'Identify gaps and differences in import VAT evidence.'
+      benefit: 'Identify gaps and differences in import VAT evidence before submission.'
     },
     {
       num: 'MODULE 5',
       title: 'Evidence Vault',
-      status: 'Proposed MVP',
+      status: 'Planned MVP capability',
       icon: Archive,
       scope: [
-        'Retain source documents.',
-        'Record reconciliation decisions.',
-        'Maintain supporting records and an audit trail.',
-        'Use tamper-evident hashes as part of the planned evidence design.'
+        'SHA-256 hash-chained records with append-only history.',
+        'Accounting-period locking to prevent silent amendments.',
+        'Separation between preparer and approver.',
+        'Traceable reconciliation decisions and underlying supporting evidence.',
+        'Planned open exports (API export planned as a later capability).'
       ],
-      benefit: 'Keep supporting evidence organised and easier to retrieve.'
+      benefit: 'Designed to make retrospective changes detectable while retaining earlier records.'
     },
     {
       num: 'MODULE 6',
       title: 'Margin Guard & CBAM Monitor',
-      status: 'Planned capability • CBAM: Year 2 roadmap',
+      status: 'Planned capability • CBAM Monitor v1: Planned Year 1 (Beta)',
       icon: TrendingUp,
       scope: [
-        'Highlight changes in product costs and margins.',
-        'Monitor relevant imports for planned CBAM functionality.',
-        'Support supplier emissions-data requests and evidence collection.'
+        'Comparison of landed cost with selling price and target margin.',
+        'Configurable rules and flags for potential margin erosion.',
+        'Backward-looking and forward-looking CBAM threshold monitoring.',
+        'Supplier emissions-data requests and adviser readiness information.',
+        'CBAM Monitor v1 is planned within Year 1 development and beta hardening.'
       ],
-      benefit: 'Spot margin pressure and prepare relevant supporting information.'
+      benefit: 'Spot margin pressure early and prepare relevant supporting information.'
     }
   ];
 
@@ -98,7 +107,7 @@ export default function PlatformSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="max-w-3xl">
+        <div className="max-w-3xl scroll-reveal">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#D6CCC2]/35 text-[#2C2420] border border-[#D6CCC2] mb-4">
             Core Architecture
           </div>
@@ -117,7 +126,7 @@ export default function PlatformSection() {
             return (
               <div
                 key={mod.num}
-                className="rounded-2xl border border-[#D6CCC2] bg-white p-7 sm:p-8 shadow-2xs card-hover flex flex-col justify-between"
+                className="rounded-2xl border border-[#D6CCC2] bg-white p-7 sm:p-8 shadow-2xs card-hover flex flex-col justify-between scroll-reveal"
               >
                 <div>
                   {/* Top Bar with Number & Status Badge */}
@@ -170,8 +179,46 @@ export default function PlatformSection() {
           })}
         </div>
 
+        {/* AI and Human Review Policy Card */}
+        <div className="mt-14 rounded-2xl bg-white border border-[#D6CCC2] p-7 sm:p-9 shadow-2xs scroll-reveal">
+          <div className="flex items-start gap-4">
+            <div className="p-3 rounded-xl bg-[#D6CCC2]/35 text-[#2C2420] shrink-0 mt-1">
+              <UserCheck className="w-6 h-6 text-[#2C2420]" aria-hidden="true" />
+            </div>
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-bold uppercase tracking-wider bg-[#F7F5F2] text-[#2C2420] border border-[#D6CCC2] mb-2">
+                Governance & Policy
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-[#2C2420]">
+                AI and Human Review Policy
+              </h3>
+              <p className="mt-3 text-sm sm:text-base text-[#2C2420] font-medium leading-relaxed">
+                “AI is planned for document reading and candidate matching. Financial allocations, reconciliation checks, threshold tests and evidence hashing use deterministic rules. Proposed ledger postings require human approval.”
+              </p>
+              <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-5 border-t border-[#D6CCC2] text-xs sm:text-sm text-[#5C524B]">
+                <div className="flex items-start gap-2">
+                  <span className="text-[#2C2420] font-bold">•</span>
+                  <span>Low-confidence matches are routed to a human reviewer queue.</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-[#2C2420] font-bold">•</span>
+                  <span>The approver is strictly separate from the preparer for financial governance.</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-[#2C2420] font-bold">•</span>
+                  <span>All review decisions and rationale are permanently recorded in the audit trail.</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="text-[#2C2420] font-bold">•</span>
+                  <span>Customer data is used for model improvement only with explicit consent.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Supporting Capabilities Area */}
-        <div className="mt-16 rounded-2xl bg-white border border-[#D6CCC2] p-7 sm:p-9 shadow-2xs">
+        <div className="mt-14 rounded-2xl bg-white border border-[#D6CCC2] p-7 sm:p-9 shadow-2xs scroll-reveal">
           <div className="flex flex-col md:flex-row md:items-center justify-between pb-5 border-b border-[#D6CCC2] gap-2">
             <div>
               <h3 className="text-xl sm:text-2xl font-extrabold text-[#2C2420]">
@@ -188,7 +235,7 @@ export default function PlatformSection() {
 
           <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             
-            <div className="p-4 rounded-xl bg-[#F7F5F2] border border-[#D6CCC2]">
+            <div className="p-4 rounded-xl bg-[#F7F5F2] border border-[#D6CCC2] card-hover">
               <div className="flex items-center justify-between mb-2">
                 <Lock className="w-4 h-4 text-[#2C2420]" aria-hidden="true" />
                 <span className="text-[10px] font-bold text-[#2C2420] bg-white border border-[#D6CCC2] px-2 py-0.5 rounded">
@@ -201,7 +248,7 @@ export default function PlatformSection() {
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-[#F7F5F2] border border-[#D6CCC2]">
+            <div className="p-4 rounded-xl bg-[#F7F5F2] border border-[#D6CCC2] card-hover">
               <div className="flex items-center justify-between mb-2">
                 <Clock className="w-4 h-4 text-[#2C2420]" aria-hidden="true" />
                 <span className="text-[10px] font-bold text-[#2C2420] bg-white border border-[#D6CCC2] px-2 py-0.5 rounded">
@@ -214,7 +261,7 @@ export default function PlatformSection() {
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-[#F7F5F2] border border-[#D6CCC2]">
+            <div className="p-4 rounded-xl bg-[#F7F5F2] border border-[#D6CCC2] card-hover">
               <div className="flex items-center justify-between mb-2">
                 <FileCheck2 className="w-4 h-4 text-[#2C2420]" aria-hidden="true" />
                 <span className="text-[10px] font-bold text-[#2C2420] bg-white border border-[#D6CCC2] px-2 py-0.5 rounded">
@@ -227,11 +274,11 @@ export default function PlatformSection() {
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-white border border-[#D6CCC2]">
+            <div className="p-4 rounded-xl bg-white border border-[#D6CCC2] card-hover">
               <div className="flex items-center justify-between mb-2">
                 <Compass className="w-4 h-4 text-[#2C2420]" aria-hidden="true" />
                 <span className="text-[10px] font-bold text-[#2C2420] bg-[#D6CCC2]/40 px-2 py-0.5 rounded">
-                  Year 3 Roadmap
+                  Year 2 Roadmap
                 </span>
               </div>
               <h4 className="text-sm font-bold text-[#2C2420]">Accountant portfolio</h4>
@@ -240,11 +287,11 @@ export default function PlatformSection() {
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-white border border-[#D6CCC2]">
+            <div className="p-4 rounded-xl bg-white border border-[#D6CCC2] card-hover">
               <div className="flex items-center justify-between mb-2">
                 <TrendingUp className="w-4 h-4 text-[#2C2420]" aria-hidden="true" />
                 <span className="text-[10px] font-bold text-[#2C2420] bg-[#D6CCC2]/40 px-2 py-0.5 rounded">
-                  Year 3 Roadmap
+                  Later Roadmap
                 </span>
               </div>
               <h4 className="text-sm font-bold text-[#2C2420]">Tariff-change watch</h4>
@@ -257,7 +304,7 @@ export default function PlatformSection() {
         </div>
 
         {/* Proposed Development Roadmap */}
-        <div className="mt-16 rounded-2xl bg-[#2C2420] text-white p-7 sm:p-10 border border-[#2C2420] shadow-md">
+        <div className="mt-14 rounded-2xl bg-[#2C2420] text-white p-7 sm:p-10 border border-[#2C2420] shadow-md scroll-reveal">
           <div className="max-w-2xl mb-8">
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#D6CCC2] block mb-2">
               Phased Delivery Plan
@@ -266,29 +313,33 @@ export default function PlatformSection() {
               Proposed development roadmap
             </h3>
             <p className="text-xs sm:text-sm text-[#D6CCC2] mt-1.5 leading-relaxed">
-              Relative delivery sequencing across proposed stages. No calendar launch dates are claimed.
+              Relative development phases, not confirmed calendar launch dates. All roadmap items remain planned.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             
             {/* Year 1 */}
-            <div className="p-5 rounded-xl bg-[#3D332D] border border-[#D6CCC2]">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-bold bg-[#1f1916] text-[#D6CCC2] border border-[#5C524B] mb-3">
-                Year 1 — Proposed MVP
+            <div className="p-6 rounded-xl bg-[#3D332D] border border-[#D6CCC2]">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-bold bg-[#1f1916] text-[#D6CCC2] border border-[#5C524B] mb-4">
+                Year 1 — Core Platform and Beta
               </div>
               <ul className="space-y-2.5 text-xs sm:text-sm text-[#F7F5F2]">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-[#D6CCC2] shrink-0 mt-0.5" aria-hidden="true" />
-                  <span>Document capture</span>
+                  <span>Capture, classification and extraction</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-[#D6CCC2] shrink-0 mt-0.5" aria-hidden="true" />
-                  <span>Entry matching</span>
+                  <span>Entry matching and reviewer queue</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-[#D6CCC2] shrink-0 mt-0.5" aria-hidden="true" />
-                  <span>Landed-cost journals for Xero</span>
+                  <span>Landed-Cost Engine</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-[#D6CCC2] shrink-0 mt-0.5" aria-hidden="true" />
+                  <span>Xero posting</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-[#D6CCC2] shrink-0 mt-0.5" aria-hidden="true" />
@@ -296,41 +347,49 @@ export default function PlatformSection() {
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-4 h-4 text-[#D6CCC2] shrink-0 mt-0.5" aria-hidden="true" />
-                  <span>Evidence Vault</span>
+                  <span>Evidence Vault v1</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-[#D6CCC2] shrink-0 mt-0.5" aria-hidden="true" />
+                  <span>CBAM Monitor v1 during later Year 1 development</span>
                 </li>
               </ul>
             </div>
 
             {/* Year 2 */}
-            <div className="p-5 rounded-xl bg-[#3D332D] border border-[#5C524B]">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-bold bg-[#1f1916] text-[#D6CCC2] border border-[#5C524B] mb-3">
-                Year 2 — Planned expansion
+            <div className="p-6 rounded-xl bg-[#3D332D] border border-[#5C524B]">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-bold bg-[#1f1916] text-[#D6CCC2] border border-[#5C524B] mb-4">
+                Year 2 — Expanded Workflows
               </div>
               <ul className="space-y-2.5 text-xs sm:text-sm text-[#D6CCC2]">
                 <li className="flex items-start gap-2">
                   <span className="text-[#D6CCC2] font-bold shrink-0 mt-0.5">•</span>
-                  <span>QuickBooks and Sage connectors</span>
+                  <span>Sage connector</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#D6CCC2] font-bold shrink-0 mt-0.5">•</span>
-                  <span>C79 functionality</span>
+                  <span>C79 module</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#D6CCC2] font-bold shrink-0 mt-0.5">•</span>
-                  <span>CBAM monitoring</span>
+                  <span>Accountant portfolio view</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#D6CCC2] font-bold shrink-0 mt-0.5">•</span>
+                  <span>Expanded integration capabilities</span>
                 </li>
               </ul>
             </div>
 
-            {/* Year 3 */}
-            <div className="p-5 rounded-xl bg-[#3D332D] border border-[#5C524B]">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-bold bg-[#1f1916] text-[#D6CCC2] border border-[#5C524B] mb-3">
-                Year 3 — Planned expansion
+            {/* Later Development */}
+            <div className="p-6 rounded-xl bg-[#3D332D] border border-[#5C524B]">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-bold bg-[#1f1916] text-[#D6CCC2] border border-[#5C524B] mb-4">
+                Later Development
               </div>
               <ul className="space-y-2.5 text-xs sm:text-sm text-[#D6CCC2]">
                 <li className="flex items-start gap-2">
                   <span className="text-[#D6CCC2] font-bold shrink-0 mt-0.5">•</span>
-                  <span>Accountant portfolio view</span>
+                  <span>API and additional exports</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#D6CCC2] font-bold shrink-0 mt-0.5">•</span>
@@ -338,42 +397,45 @@ export default function PlatformSection() {
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-[#D6CCC2] font-bold shrink-0 mt-0.5">•</span>
-                  <span>API</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Later Opportunities */}
-            <div className="p-5 rounded-xl bg-[#3D332D] border border-[#5C524B]">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-bold bg-[#1f1916] text-[#D6CCC2] border border-[#5C524B] mb-3">
-                Later opportunities
-              </div>
-              <ul className="space-y-2.5 text-xs sm:text-sm text-[#D6CCC2]">
-                <li className="flex items-start gap-2">
-                  <span className="text-[#D6CCC2] font-bold shrink-0 mt-0.5">•</span>
-                  <span>Irish/EU import regimes</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#D6CCC2] font-bold shrink-0 mt-0.5">•</span>
-                  <span>White-label licensing</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-[#D6CCC2] font-bold shrink-0 mt-0.5">•</span>
                   <span>Improved extraction models</span>
                 </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#D6CCC2] font-bold shrink-0 mt-0.5">•</span>
+                  <span>Direct broker feeds</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#D6CCC2] font-bold shrink-0 mt-0.5">•</span>
+                  <span>Ireland and EU adaptations</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#D6CCC2] font-bold shrink-0 mt-0.5">•</span>
+                  <span>White-label opportunities</span>
+                </li>
               </ul>
             </div>
 
+          </div>
+
+          {/* Timing Ambiguities Note */}
+          <div className="mt-6 pt-5 border-t border-[#5C524B] flex flex-col sm:flex-row sm:items-center justify-between text-xs text-[#D6CCC2] gap-3">
+            <div>
+              <span className="font-semibold text-white">Integration timing: </span>
+              QuickBooks: planned following the initial Xero integration. API: planned expansion.
+            </div>
+            <div className="text-[11px] text-[#D6CCC2]/80">
+              Relative development phases • Not firm delivery promises
+            </div>
           </div>
         </div>
 
         {/* What LandedLedger Is and Is Not Banner */}
-        <div className="mt-14 p-6 sm:p-7 rounded-2xl bg-white border border-[#D6CCC2] text-xs sm:text-sm text-[#5C524B] leading-relaxed shadow-2xs">
-          <div className="font-bold text-[#2C2420] text-sm sm:text-base mb-2">
+        <div className="mt-14 p-6 sm:p-7 rounded-2xl bg-white border border-[#D6CCC2] text-xs sm:text-sm text-[#5C524B] leading-relaxed shadow-2xs scroll-reveal">
+          <div className="flex items-center gap-2 font-bold text-[#2C2420] text-sm sm:text-base mb-2">
+            <ShieldAlert className="w-5 h-5 text-[#2C2420]" aria-hidden="true" />
             Software Scope & Integration Boundaries
           </div>
           <p className="mb-2">
-            LandedLedger is intended to work alongside accounting software. Xero is prioritised for the proposed MVP; QuickBooks and Sage are later roadmap integrations.
+            LandedLedger is intended to work alongside accounting software. Xero is prioritised for the proposed MVP; QuickBooks is planned following the initial Xero integration, with Sage in the expansion roadmap.
           </p>
           <p className="text-[#5C524B]">
             LandedLedger is not a replacement for an accounting system, a customs declaration filing service, an autonomous tax adviser, or a live VAT-return submission service. It does not guarantee compliance or HMRC acceptance.

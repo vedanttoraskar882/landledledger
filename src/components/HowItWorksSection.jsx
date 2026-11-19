@@ -8,7 +8,8 @@ import {
   AlertCircle,
   FolderLock,
   LineChart,
-  UserCheck
+  UserCheck,
+  Landmark
 } from 'lucide-react';
 
 export default function HowItWorksSection() {
@@ -16,50 +17,50 @@ export default function HowItWorksSection() {
     {
       num: 1,
       icon: Settings,
-      title: 'Set up the workspace',
-      description: 'Connect a supported accounting platform and configure document forwarding. Xero is prioritised for the proposed MVP.'
+      title: 'Connect and configure',
+      description: 'Set up document capture and a supported accounting connection. Xero is prioritised for the initial MVP.'
     },
     {
       num: 2,
       icon: UploadCloud,
-      title: 'Submit import documents',
-      description: 'Upload or forward supplier invoices, freight bills, broker documents and import VAT statements.'
+      title: 'Capture documents',
+      description: 'Collect supplier, freight, insurance, broker and import VAT documents through forwarding, upload or sync.'
     },
     {
       num: 3,
       icon: FileSearch,
-      title: 'Extract and match',
-      description: 'Extract relevant information and link records to customs entries. Review uncertain matches.'
+      title: 'Match and review',
+      description: 'Link records to customs entries using exact references and confidence-scored matching. Route uncertain matches for review.'
     },
     {
       num: 4,
       icon: Calculator,
       title: 'Calculate landed costs',
-      description: 'Allocate costs to product lines using the selected method and review proposed accounting adjustments.'
+      description: 'Allocate charges to product lines and record the allocation method and foreign-exchange evidence.'
     },
     {
       num: 5,
-      icon: ShieldCheck,
-      title: 'Reconcile import VAT',
-      description: 'Compare statement information with linked documents and accounting records.'
+      icon: AlertCircle,
+      title: 'Approve accounting adjustments',
+      description: 'Prepare proposed journals or item-cost updates for human approval before any ledger posting.'
     },
     {
       num: 6,
-      icon: AlertCircle,
-      title: 'Resolve exceptions',
-      description: 'Investigate missing evidence, timing differences, incorrect values, duplicates and other discrepancies.'
+      icon: ShieldCheck,
+      title: 'Reconcile import VAT',
+      description: 'Compare statement lines with the evidence graph and ledger, classify discrepancies and investigate exceptions.'
     },
     {
       num: 7,
       icon: FolderLock,
-      title: 'Prepare and retain evidence',
-      description: 'Generate supporting workings and an exception log, then retain the period’s evidence.'
+      title: 'Lock and retain evidence',
+      description: 'Retain the approved period’s supporting records and decisions in the planned tamper-evident vault.'
     },
     {
       num: 8,
       icon: LineChart,
-      title: 'Monitor costs and relevant imports',
-      description: 'Review planned margin alerts and, when available, CBAM monitoring.'
+      title: 'Monitor margins and relevant imports',
+      description: 'Review planned margin alerts and CBAM monitoring outputs across your imported inventory.'
     }
   ];
 
@@ -68,7 +69,7 @@ export default function HowItWorksSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="max-w-3xl">
+        <div className="max-w-3xl scroll-reveal">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#D6CCC2]/35 text-[#2C2420] border border-[#D6CCC2] mb-4">
             Proposed product workflow
           </div>
@@ -87,7 +88,7 @@ export default function HowItWorksSection() {
             return (
               <div
                 key={step.num}
-                className="relative p-7 rounded-2xl border border-[#D6CCC2] bg-white card-hover flex flex-col justify-between shadow-2xs"
+                className="relative p-7 rounded-2xl border border-[#D6CCC2] bg-white card-hover flex flex-col justify-between shadow-2xs scroll-reveal"
               >
                 <div>
                   <div className="flex items-center justify-between mb-5">
@@ -112,14 +113,33 @@ export default function HowItWorksSection() {
           })}
         </div>
 
-        {/* Human Review Visible Note */}
-        <div className="mt-14 p-5 sm:p-6 rounded-2xl bg-white border border-[#D6CCC2] text-[#2C2420] flex items-center gap-4 shadow-2xs max-w-3xl mx-auto">
-          <div className="p-2.5 rounded-xl bg-[#D6CCC2]/35 text-[#2C2420] shrink-0">
-            <UserCheck className="w-5 h-5" aria-hidden="true" />
+        {/* Human Review & Banking Governance Notes */}
+        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto scroll-reveal">
+          {/* Human Review Note */}
+          <div className="p-5 sm:p-6 rounded-2xl bg-white border border-[#D6CCC2] text-[#2C2420] flex items-start gap-4 shadow-2xs">
+            <div className="p-2.5 rounded-xl bg-[#D6CCC2]/35 text-[#2C2420] shrink-0 mt-0.5">
+              <UserCheck className="w-5 h-5" aria-hidden="true" />
+            </div>
+            <div>
+              <h4 className="text-sm font-bold text-[#2C2420] mb-1">Human Review & Approvals</h4>
+              <p className="text-xs sm:text-sm text-[#5C524B] leading-relaxed">
+                Human review and approval are an integral part of the proposed workflow. Uncertain matches and proposed accounting adjustments require explicit user confirmation before finalisation.
+              </p>
+            </div>
           </div>
-          <p className="text-xs sm:text-sm font-semibold leading-relaxed">
-            <strong>Human review and approval are part of the proposed workflow.</strong> Uncertain matches and accounting adjustments require user confirmation before finalisation.
-          </p>
+
+          {/* Planned Bank Feeds Note */}
+          <div className="p-5 sm:p-6 rounded-2xl bg-white border border-[#D6CCC2] text-[#2C2420] flex items-start gap-4 shadow-2xs">
+            <div className="p-2.5 rounded-xl bg-[#D6CCC2]/35 text-[#2C2420] shrink-0 mt-0.5">
+              <Landmark className="w-5 h-5" aria-hidden="true" />
+            </div>
+            <div>
+              <h4 className="text-sm font-bold text-[#2C2420] mb-1">Planned Banking Feeds</h4>
+              <p className="text-xs sm:text-sm text-[#5C524B] leading-relaxed">
+                Planned read-only feeds through an FCA-authorised open-banking provider for foreign-exchange and duty disbursement reconciliation. LandedLedger is not itself FCA-authorised and does not execute bank payments.
+              </p>
+            </div>
+          </div>
         </div>
 
       </div>

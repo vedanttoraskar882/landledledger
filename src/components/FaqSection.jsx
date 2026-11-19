@@ -7,11 +7,11 @@ export default function FaqSection() {
   const faqs = [
     {
       q: 'What is LandedLedger?',
-      a: 'LandedLedger is a proposed platform that connects import documents, product-level landed costs and import VAT evidence around each customs entry.'
+      a: 'LandedLedger is being developed to help VAT-registered UK importers connect import documents, calculate true landed cost per product, reconcile import VAT evidence and retain a traceable record around every customs entry.'
     },
     {
       q: 'Who is it designed for?',
-      a: 'It is intended for UK SME importers, wholesalers, distributors, e-commerce sellers and accounting practices supporting these businesses.'
+      a: 'It is designed for VAT-registered UK SME importers (primarily with 1–49 employees), wholesalers, distributors, trade suppliers, e-commerce sellers, accountancy practices and bookkeepers, and larger distributors requiring multi-entity support. Geographic focus is initially on South East England and London, with planned expansion across Great Britain.'
     },
     {
       q: 'What is a landed cost?',
@@ -19,7 +19,7 @@ export default function FaqSection() {
     },
     {
       q: 'What is the Import Evidence Graph?',
-      a: 'It is the proposed connected record linking documents, costs, accounting records and reconciliation decisions around a customs entry reference.'
+      a: 'It is the proposed connected record linking documents, costs, accounting records and reconciliation decisions around the customs entry reference: "One connected record for each customs entry."'
     },
     {
       q: 'Which documents will the platform work with?',
@@ -27,31 +27,35 @@ export default function FaqSection() {
     },
     {
       q: 'Which accounting systems are planned?',
-      a: 'Xero is prioritised for the proposed MVP. QuickBooks and Sage connectors are included in the Year 2 roadmap.'
+      a: 'Xero is prioritised for the proposed MVP. QuickBooks is planned following the initial Xero integration, with Sage in the expansion roadmap.'
     },
     {
-      q: 'Will accounting decisions be fully automatic?',
-      a: 'No. The proposed workflow includes human review of uncertain matches, reconciliation exceptions and accounting adjustments.'
+      q: 'How does LandedLedger use AI and handle human review?',
+      a: 'AI is planned for document reading and candidate matching. Financial allocations, reconciliation checks, threshold tests and evidence hashing use deterministic rules. Proposed ledger postings require human approval, with low-confidence matches routed to a reviewer and approvers kept separate from preparers.'
     },
     {
       q: 'Are PVA and C79 both included in the MVP?',
-      a: 'PVA reconciliation is part of the proposed Year 1 MVP. C79 functionality is included in the Year 2 roadmap.'
+      a: 'PVA reconciliation is planned for the MVP. C79 reconciliation is planned for Year 2 expansion.'
     },
     {
-      q: 'Is the platform available now?',
-      a: 'LandedLedger is at concept and proposed MVP stage. This website introduces the planned platform and provides a pilot enquiry form.'
+      q: 'Who is leading LandedLedger?',
+      a: 'LandedLedger is led by Muhammad Abdur Rauf (Founder & CEO, with over 10 years of accounting experience across accounts assistant, accountant and manager roles) and Mohsin Yaseen (Chief Technology Officer, with over 18 years of software engineering and ERP architecture experience).'
     },
     {
       q: 'How much will it cost?',
-      a: 'Indicative subscriptions are Starter at £79/month for up to 15 customs entries, Growth at £199/month for up to 60, and Pro at £449/month for up to 200 with multiple entities. Prices are subject to pilot validation.'
+      a: 'Indicative subscriptions are Starter at £79/month for up to 15 customs entries, Growth at £199/month for up to 60, and Enterprise at £449/month for up to 200 with multiple entities. Pricing is indicative and subject to pilot validation.'
     },
     {
       q: 'Is CBAM monitoring available?',
-      a: 'CBAM monitoring is planned for Year 2. The business plan lists an indicative £49/month add-on, subject to pilot validation.'
+      a: 'CBAM Monitor v1 is planned within Year 1 development and beta hardening. Availability and commercial terms remain to be confirmed.'
+    },
+    {
+      q: 'What is the pilot programme?',
+      a: 'LandedLedger is seeking paid design-partner importers and their accountants to help validate the proposed platform before broader commercial launch.'
     },
     {
       q: 'What happens when I submit the pilot form?',
-      a: 'This frontend demonstration saves your details only in this browser on this device. It does not send an enquiry to LandedLedger or create an account. Browser data can be cleared, so the saved record is not a confirmed pilot registration.'
+      a: 'This frontend demonstration saves your details only in this browser on this device. It does not send an enquiry to LandedLedger or create an account. Browser data can be cleared at any time, so the saved record is not a confirmed pilot registration.'
     }
   ];
 
@@ -64,7 +68,7 @@ export default function FaqSection() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        <div className="text-center max-w-2xl mx-auto mb-14 scroll-reveal">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#D6CCC2]/35 text-[#2C2420] border border-[#D6CCC2] mb-4">
             Questions & Answers
           </div>
@@ -77,7 +81,7 @@ export default function FaqSection() {
         </div>
 
         {/* Accessible Accordion List */}
-        <div className="space-y-3.5">
+        <div className="space-y-3.5 scroll-reveal">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             const questionId = `faq-q-${index}`;
@@ -86,7 +90,7 @@ export default function FaqSection() {
             return (
               <div
                 key={index}
-                className="rounded-2xl border border-[#D6CCC2] bg-white overflow-hidden transition-colors shadow-2xs"
+                className="rounded-2xl border border-[#D6CCC2] bg-white overflow-hidden transition-colors shadow-2xs card-hover"
               >
                 <h3>
                   <button
@@ -95,7 +99,7 @@ export default function FaqSection() {
                     aria-expanded={isOpen}
                     aria-controls={answerId}
                     onClick={() => toggleFaq(index)}
-                    className="w-full px-6 sm:px-8 py-5 sm:py-6 text-left flex items-center justify-between gap-4 font-bold text-[#2C2420] hover:text-[#2C2420] focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#2C2420] transition-colors"
+                    className="w-full px-6 sm:px-8 py-5 sm:py-6 text-left flex items-center justify-between gap-4 font-bold text-[#2C2420] hover:text-[#2C2420] focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#2C2420] transition-colors cursor-pointer"
                   >
                     <span className="text-base sm:text-lg leading-snug">
                       {faq.q}

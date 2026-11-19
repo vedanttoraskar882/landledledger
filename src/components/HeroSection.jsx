@@ -15,6 +15,64 @@ export default function HeroSection({ onOpenPilotModal }) {
       {/* Background Subtle Warm Grid */}
       <div className="absolute inset-0 bg-grid-warm opacity-80 pointer-events-none" aria-hidden="true" />
 
+      {/* Subtle Background Animation: Soft Gradient Drift & Connected Evidence Network */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        {/* Soft Drift Gradient Orbs */}
+        <div className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-[#D6CCC2]/20 blur-2xl animate-gradient-drift" />
+        <div className="absolute top-1/2 -right-28 w-[420px] h-[420px] rounded-full bg-[#D6CCC2]/15 blur-2xl animate-gradient-drift [animation-delay:12s]" />
+
+        {/* Connected Evidence Network SVG Layer */}
+        <svg
+          className="absolute inset-0 w-full h-full opacity-45 hidden md:block"
+          viewBox="0 0 1440 800"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {/* Subtle connection pathways */}
+          <path
+            d="M 180 180 Q 420 120 720 220"
+            stroke="#D6CCC2"
+            strokeWidth="1.25"
+            className="animate-network-line"
+          />
+          <path
+            d="M 1260 160 Q 980 140 720 220"
+            stroke="#D6CCC2"
+            strokeWidth="1.25"
+            className="animate-network-line [animation-delay:4s]"
+          />
+          <path
+            d="M 240 620 Q 460 480 720 220"
+            stroke="#D6CCC2"
+            strokeWidth="1.25"
+            className="animate-network-line [animation-delay:8s]"
+          />
+          <path
+            d="M 1200 600 Q 960 460 720 220"
+            stroke="#D6CCC2"
+            strokeWidth="1.25"
+            className="animate-network-line [animation-delay:12s]"
+          />
+
+          {/* Network Nodes */}
+          <circle cx="180" cy="180" r="4.5" fill="#2C2420" fillOpacity="0.25" />
+          <circle cx="180" cy="180" r="10" stroke="#D6CCC2" strokeWidth="1" className="animate-node-glow" />
+
+          <circle cx="1260" cy="160" r="4.5" fill="#2C2420" fillOpacity="0.25" />
+          <circle cx="1260" cy="160" r="10" stroke="#D6CCC2" strokeWidth="1" className="animate-node-glow [animation-delay:4s]" />
+
+          <circle cx="240" cy="620" r="4.5" fill="#2C2420" fillOpacity="0.25" />
+          <circle cx="240" cy="620" r="10" stroke="#D6CCC2" strokeWidth="1" className="animate-node-glow [animation-delay:8s]" />
+
+          <circle cx="1200" cy="600" r="4.5" fill="#2C2420" fillOpacity="0.25" />
+          <circle cx="1200" cy="600" r="10" stroke="#D6CCC2" strokeWidth="1" className="animate-node-glow [animation-delay:12s]" />
+
+          {/* Central Customs Hub Node */}
+          <circle cx="720" cy="220" r="6" fill="#2C2420" fillOpacity="0.3" />
+          <circle cx="720" cy="220" r="14" stroke="#D6CCC2" strokeWidth="1.5" className="animate-node-glow [animation-delay:2s]" />
+        </svg>
+      </div>
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Hero Header */}
@@ -29,9 +87,9 @@ export default function HeroSection({ onOpenPilotModal }) {
             “Every import fully costed, every pound of import VAT fully evidenced.”
           </p>
 
-          {/* Description - Legible & Proportionate */}
+          {/* Description - Updated to Target Positioning */}
           <p className="mt-6 text-base sm:text-lg lg:text-xl text-[#5C524B] leading-relaxed text-balance max-w-3xl mx-auto">
-            LandedLedger is being developed to help UK importers connect shipment documents, calculate product-level landed costs and reconcile import VAT evidence in one traceable workflow.
+            LandedLedger is being developed to help VAT-registered UK importers connect import documents, calculate true landed cost per product, reconcile import VAT evidence and retain a traceable record around every customs entry.
           </p>
 
           {/* Action CTAs */}
@@ -297,11 +355,17 @@ export default function HeroSection({ onOpenPilotModal }) {
           </div>
         </div>
 
-        {/* Audience Strip */}
-        <div className="mt-16 max-w-4xl mx-auto text-center">
-          <div className="p-5 sm:p-6 rounded-2xl bg-[#2C2420] text-[#F7F5F2] shadow-md border border-[#2C2420]">
-            <p className="text-sm sm:text-base font-bold tracking-wide">
-              Designed for UK importers, wholesalers, distributors, e-commerce sellers and accounting practices.
+        {/* Audience Strip - Updated with Complete Target Segments & Geography */}
+        <div className="mt-16 max-w-5xl mx-auto text-center scroll-reveal">
+          <div className="p-6 sm:p-7 rounded-2xl bg-[#2C2420] text-[#F7F5F2] shadow-md border border-[#2C2420]">
+            <p className="text-xs font-mono font-bold uppercase tracking-wider text-[#D6CCC2] mb-2">
+              Target Audience
+            </p>
+            <p className="text-sm sm:text-base font-bold tracking-wide leading-relaxed">
+              Designed for VAT-registered UK SME importers (1–49 employees), wholesalers, distributors, trade suppliers, e-commerce sellers, multi-entity distributors, and accountancy practices serving importing clients.
+            </p>
+            <p className="text-xs text-[#D6CCC2] mt-3 pt-3 border-t border-[#5C524B]/70 max-w-2xl mx-auto">
+              Initially focused on South East England and London, with planned expansion across Great Britain.
             </p>
           </div>
         </div>
