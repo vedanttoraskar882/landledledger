@@ -239,16 +239,25 @@ export default function AboutSection() {
               </div>
 
               {/* Education */}
-              <div className="mt-6 pt-5 border-t border-[#D6CCC2]/80 space-y-2">
-                <div className="text-xs font-bold uppercase tracking-wider text-[#2C2420] mb-2.5 flex items-center gap-2">
+              <div className="mt-6 pt-5 border-t border-[#D6CCC2]/80 space-y-1">
+                <div className="text-xs font-bold uppercase tracking-wider text-[#2C2420] mb-2 flex items-center gap-2">
                   <GraduationCap className="w-4 h-4 text-[#5C524B]" aria-hidden="true" />
                   Education & Foundation
                 </div>
-                <div className="text-xs sm:text-sm text-[#5C524B]">
-                  <strong className="text-[#2C2420] font-bold">Bachelor of Business Administration</strong> — Institute of Business Administration, Karachi.
+                <div className="text-sm sm:text-base font-bold text-[#2C2420]">
+                  MSc International Business
                 </div>
                 <div className="text-xs sm:text-sm text-[#5C524B]">
-                  <strong className="text-[#2C2420] font-bold">Bachelor of Commerce</strong> — University of the Punjab.
+                  University of Hertfordshire
+                </div>
+                <div className="text-xs sm:text-sm text-[#5C524B]">
+                  De Haviland Campus
+                </div>
+                <div className="text-xs sm:text-sm text-[#5C524B]">
+                  September 2025 – September 2026
+                </div>
+                <div className="text-xs text-[#5C524B] font-medium pt-0.5">
+                  Awarded with Commendation
                 </div>
               </div>
             </div>
